@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Foutch</title>
+  <!-- Link to Bootstrap for responsive layout -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- For icons -->
+  <!-- Set favicon for the webpage tab -->
+  <link rel="icon" href="/Users/davidfoutch/Desktop/professional_portfolio_development/portfolio_development/img/favicon.png" type="image/jpeg">
+  <style>
+
+    /* Navbar Styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      /*background-color: rgba(0, 0, 0, 0.6);*/ /* Shiny black navbar */
+      background-color: #333; /* Shiny black navbar */
+      padding: 10px 50px;
+      box-shadow: none;
+      z-index: 1000;
+    }
+
+    /* Brand Styling */
+    .navbar .navbar-brand {
+      color: white;
+      font-size: 1.8em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column; /* Stack name and byline vertically */
+      align-items: center; /* Center the items */
+      text-align: center; /* Ensure text is centered */
+    }
+
+    /* Name container styling */
+    .navbar .navbar-brand .name-container {
+      display: flex;
+      flex-direction: row; /* Place image and name side by side */
+      align-items: center; /* Align the image and name vertically */
+      justify-content: center; /* Center the content horizontally */
+    }
+
+     /* Byline Styling */
+    .navbar .navbar-brand .byline {
+      font-size: 0.5em;
+      font-style: italic;
+      color: white;
+      margin-top: 5px; /* Space between name and byline */
+      font-weight: normal; /* Make byline text lighter */
+      opacity: 0.8; /* Slightly reduce opacity for a softer look */
+      text-align: center; /* Ensure the byline starts from the left */
+    }
+
+    /* Image Styling */
+    .navbar .navbar-brand img {
+      width: 60px;  /* Adjust the size of your image */
+      height: 60px;
+      border-radius: 50%; /* Make it circular */
+      position: absolute;
+      left: 20px; /* Move the image to the left */
+      top: 50%;  /* Vertically center the image */
+      transform: translateY(-50%); /* Ensure it's vertically centered */
+    }
+
+
+    .navbar-nav {
+      display: flex;
+      justify-content: center;  /* Center the nav items */
+      width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      position: relative; /* To position the underline */
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    /* Creating the underline effect */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #00b4d8;
+      bottom: 0;
+      left: 50%;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #00b4d8 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+      left: 0; /* Slide out from the center */
+    }
+
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Optional: Body padding to prevent navbar overlap */
+    body {
+      padding-top: 150px; /* Space below the navbar */
+    }
+
+
+    /*---------------------------------------------------------------------*/
+    .header-section {
+      /*padding: 10px 0;*/
+      text-align: left;
+      margin-bottom: 20px 0;
+    }
+
+    .header-section h1 {
+      font-size: 3.5em;
+      font-weight: bold;
+      text-align: left;
+      color: #000000;
+      margin: 0 auto;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .header-section h2 {
+      font-size: 1.6em;
+      text-align: left;
+      color: #aaa;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    .header-section p {
+      font-family: 'Cardo', times new roman;
+      font-size: 1.5em;
+      color: #333;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 20px;
+    }
+
+    /* More specific selector for description */
+    .header-section .description {
+      font-size: 1.3rem; /* Adjusted to a more readable size */
+      color: #666; /* Slightly lighter color for description */
+      margin-bottom: 20px; /* Adjusted margin to prevent excessive spacing */
+      font-family: Arial, sans-serif; 
+    }
+
+
+    /*---------------------------------------------------------------------*/
+    /* About Section Styling */
+    .about-section {
+      /*padding: 10px 0;*/
+      text-align: left;
+      margin-bottom: 0px 0;
+      /*background-color: #f9f9f9;*/
+    }
+
+    .about-section h1 {
+      font-size: 3.5em;
+      font-weight: bold;
+      text-align: left;
+      color: #000000;
+      margin: 0 auto;
+      max-width: 800px;
+      margin-bottom: 20px;
+    }
+
+    .about-section h2 {
+      font-size: 1.6em;
+      text-align: left;
+      color: #aaa;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      /*margin-top: 20px;*/
+    }
+
+    .about-section p {
+      font-family: 'Cardo', times new roman;
+      font-size: 1.5em;
+      color: #333;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-top: 50px;
+    }
+
+    .about-section .description {
+      font-size: 1.3rem; /* Adjusted to a more readable size */
+      color: #666; /* Slightly lighter color for description */
+      margin-bottom: 20px; /* Adjusted margin to prevent excessive spacing */
+      font-family: Arial, sans-serif; 
+    }
+
+
+    /*---------------------------------------------------------------------*/
+    .category {
+      font-style: italic;
+      font-size: 1.0em; /* Smaller font size */
+      font-weight: 400; /* Light weight for text */
+      color: #aaa; /* Light gray color */
+      text-align: left; /* Left-aligned */
+      margin-bottom: 10px;
+    }
+
+
+    /*---------------------------------------------------------------------*/
+    /* Author Info Styling */
+    .author-info {
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      max-width: 800px; /* Ensure it's the same width as the main content */
+      margin: 0 auto;  /* Center the author info with respect to the text */
+    }
+
+    .author-picture {
+      width: 50px;  /* Set a size for the picture */
+      height: 50px;
+      border-radius: 50%;  /* Make the picture round */
+      margin-right: 15px;  /* Space between the picture and text */
+    }
+
+    .author-details {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-name {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .author-date {
+      color: #aaa;
+      font-size: 0.9rem;
+    }
+
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar (same as homepage) -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="/Users/davidfoutch/Desktop/professional_portfolio_development/portfolio_development/img/favicon.png" alt="David Foutch">
+        David Foutch
+        <span class="byline">Data Science and Bioinformatics</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tutorials.html">Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="researchreviews.html">Data Science in Research</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="header-section"> 
+    <h2 class="category">Data Science</h2>
+    <h1>Graph Neural Networks (GNNs) in Bioinformatics</h1>
+    <p class="description">
+      In this post, we'll provide a high-level overview of the application of Graph Neural Networks (GNNs) in understanding biological systems.
+    </p>
+    <div class="author-info">
+      <img class="author-picture" src="img/picture.jpg" alt="Author's Picture">
+      <div class="author-details">
+        <span class="author-name">David Foutch</span>
+        <span class="author-date">6 Mar 2025 • 16 min read</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="about-section"> 
+    <p>
+      Hello! I’m David Foutch, a passionate Data Scientist with expertise in Bioinformatics and Computational Biology. I specialize in leveraging data science techniques and customized visualizations to identify trends and patterns that drive informed decision-making in business, healthcare, and life sciences.
+    </p>
+  </div>
+  
+
+
+  <!-- Bootstrap JS (required for navigation toggle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

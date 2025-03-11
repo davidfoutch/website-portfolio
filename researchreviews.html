@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Foutch</title>
+  <!-- Link to Bootstrap for responsive layout -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- For icons -->
+  <!-- Set favicon for the webpage tab -->
+  <link rel="icon" href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/favicon.png" type="image/jpeg">
+
+  <style>
+    /* Navbar Styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      /*background-color: rgba(0, 0, 0, 0.6);*/ /* Shiny black navbar */
+      background-color: #333; /* Shiny black navbar */
+      padding: 10px 50px;
+      box-shadow: none;
+      z-index: 1000;
+    }
+
+    /* Brand Styling */
+    .navbar .navbar-brand {
+      color: white;
+      font-size: 1.8em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column; /* Stack name and byline vertically */
+      align-items: center; /* Center the items */
+      text-align: center; /* Ensure text is centered */
+    }
+
+    /* Name container styling */
+    .navbar .navbar-brand .name-container {
+      display: flex;
+      flex-direction: row; /* Place image and name side by side */
+      align-items: center; /* Align the image and name vertically */
+      justify-content: center; /* Center the content horizontally */
+    }
+
+     /* Byline Styling */
+    .navbar .navbar-brand .byline {
+      font-size: 0.5em;
+      font-style: italic;
+      color: white;
+      margin-top: 5px; /* Space between name and byline */
+      font-weight: normal; /* Make byline text lighter */
+      opacity: 0.8; /* Slightly reduce opacity for a softer look */
+      text-align: center; /* Ensure the byline starts from the left */
+    }
+
+    /* Image Styling */
+    .navbar .navbar-brand img {
+      width: 60px;  /* Adjust the size of your image */
+      height: 60px;
+      border-radius: 50%; /* Make it circular */
+      position: absolute;
+      left: 20px; /* Move the image to the left */
+      top: 50%;  /* Vertically center the image */
+      transform: translateY(-50%); /* Ensure it's vertically centered */
+    }
+
+
+    .navbar-nav {
+      display: flex;
+      justify-content: center;  /* Center the nav items */
+      width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      position: relative; /* To position the underline */
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    /* Creating the underline effect */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #00b4d8;
+      bottom: 0;
+      left: 50%;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #00b4d8 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+      left: 0; /* Slide out from the center */
+    }
+
+    /* Optional: Optional body padding for the navbar to prevent overlap */
+    body {
+      padding-top: 100px; /* Ensure space below navbar */
+    }
+
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    .book-review-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 60px;
+      margin-top: 50px;
+    }
+
+    .book-card {
+      width: 30%;
+      background-color: #f9f9f9;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      transition: transform 0.3s ease;
+    }
+
+    .book-card img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+    }
+
+    .book-card h3 {
+      text-align: center;
+      font-size: 1.5em;
+      margin-top: 15px;
+      color: #333;
+    }
+
+    .book-card p {
+      padding: 0 10px 10px;
+      color: #555;
+      font-size: 1em;
+    }
+
+    .book-card:hover {
+      transform: scale(1.05);
+    }
+
+
+    
+
+    /* Styling for index */
+    .index {
+        margin-bottom: 20px;
+    }
+
+    .index a {
+        font-size: 1.2em;
+        color: #007BFF;
+        text-decoration: none;
+        display: block;
+        margin-bottom: 10px;
+    }
+
+    .index a:hover {
+        text-decoration: underline;
+    }
+
+
+
+
+
+  </style>
+</head>
+<body>
+
+ 
+
+
+  <!-- Navigation Bar -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="#">
+        <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/favicon.png" alt="David Foutch"> <!-- Replace with your image path -->
+        David Foutch
+        <!-- Byline -->
+        <span class="byline">Data Science and Bioinformatics</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#tutorials.html">Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="researchreviews.html">Data Science in Research</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Bootstrap JS (required for navigation toggle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- JavaScript to make navbar sticky after scroll -->
+  <script>
+    const navbar = document.querySelector('.navbar');
+   
+
+    window.addEventListener('scroll', function() {
+      if (window.scrollY > bannerHeight) {
+        navbar.classList.add('fixed-top');
+      } else {
+        navbar.classList.remove('fixed-top');
+      }
+    });
+  </script>
+
+  <!-- Book Reviews Section -->
+  <div class="container">
+    <h1 class="text-center mt-5">Journal Article Reviews</h1>
+    <!-- Index of Book Cards -->
+    <h3> Machine Learning (ML) </h3>
+    <div class="index">
+      <a href="#book3">Supervised machine learning to predict solvation Gibbs Energy</h3></a>
+    </div> 
+    <h3> Deep Learning (DL) </h3>
+    <div class="index">
+      <a href="#book1">Deep learning for computational biology</a>
+      <a href="#book2">Convolutional neural networks in pharmacogenomics</a>
+      <a href="#book4">Graph respresentations for functional residue identification</h3></a>
+      <a href="#book6">Predicting protein binding using graph neural networks</h3></a>
+    </div>
+    <h3> Natural Language Processing (NLP) </h3>
+    <h3> Computer Vision </h3>
+    <h3> Data Science </h3>
+    <div class="index">
+      <a href="#book5">Understanding structural variability using protein networks</h3></a>
+    </div>
+
+    <div class="book-review-container">
+      <!-- Book 1 -->
+      <div id="book1" class="book-card">
+          <h3>Deep Learning for Computational Biology</h3>
+          <a href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/network_centrality_comparisons_with_widgets.html">
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/ja1.png" alt="Book 1">
+          </a>
+          <p><b>Review:</b>
+              <span id="text-content">
+                  Technological advances in genomics and imaging have led to an explosion of molecular and cellular profiling data from large numbers of samples. This rapid increase in biological data dimension and acquisition rate is challenging conventional analysis strategies. Modern machine learning methods, such as deep learning, promise to leverage very large data sets for finding hidden structure within them, and for making accurate predictions. 
+              </span>
+              <span id="more-content" style="display:none;">
+                  In this review, we discuss applications of this new breed of analysis approaches in regulatory genomics and cellular imaging. We provide background of what deep learning is, and the settings in which it can be successfully applied to derive biological insights. In addition to presenting specific applications and providing tips for practical use, we also highlight possible pitfalls and limitations to guide computational biologists when and how to make the most use of this new technology.
+              </span>
+              <a href="javascript:void(0);" id="toggle-text" onclick="toggleText()">Show more</a>
+          </p>
+      </div>
+
+
+      <!-- Book 2 -->
+      <div id="book2" class="book-card">
+          <h3>Convolutional Neural Networks in Pharmacogenomics</h3>
+          <a href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/network centrality comparisons with widgets.html">
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/ja2.png" alt="Book 2">
+          </a>
+          <p><b>Review:</b>
+              <span id="text-content">
+                  Convolutional neural networks (CNNs) have been used to extract information from various datasets of diferent dimensions. This approach has led to accurate interpretations in several subfelds of biological research, like pharmacogenomics, addressing issues previously faced by other computational methods. With the rising attention for personalized and precision medicine, scientists and clinicians have now turned to artifcial intelligence systems to provide them with solutions for therapeutics development.
+              </span>
+              <span id="more-content-2" style="display:none;">
+                  CNNs have already provided valuable insights into biological data transformation. Due to the rise of interest in precision and personalized medicine, in this review, we have provided a brief overview of the possibilities of implementing CNNs as an efective tool for analyzing one-dimensional biological data, such as nucleotide and protein sequences, as well as small molecular data, e.g., simplifed molecular-input line-entry specifcation, InChI, binary fngerprints, etc., to categorize the models based on their objective and also highlight various challenges. The review is organized into specifc research domains that participate in pharmacogenomics for a more comprehensive understanding. Furthermore, the future intentions of deep learning are outlined.
+              </span>
+              <a href="javascript:void(0);" id="toggle-text-2" onclick="toggleText2()">Show more</a>
+          </p>
+      </div>
+
+      <!-- Book 3 -->
+      <div id="book3" class="book-card">
+          <h3>Supervised Machine Learning To Predict Solvation Gibbs Energy</h3>
+          <a href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/network centrality comparisons with widgets.html">
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/ja3.png" alt="Book 3">
+          </a>
+          <p><b>Research:</b>
+              <span id="text-content">
+                  Many challenges persist in developing accurate computational models for predicting solvation free energy (ΔGsol).Despite recent developments in Machine Learning (ML) methodologies that outperformed traditional quantum mechanical models,several issues remain concerning explanatory insights for broad chemical predictions with an acceptable speed−accuracy trade-off.To overcome this, we present a novel supervised ML model to predict the ΔGsol for an array of solvent−solute pairs. 
+              </span>
+              <span id="more-content-3" style="display:none;">
+                  Using twodifferent ensemble regressor algorithms, we made fast and accurate property predictions using open-source chemical features,encoding complex electronic, structural, and surface area descriptors for every solvent and solute. By integrating molecular propertiesand chemical interaction features, we have analyzed individual descriptor importance and optimized our model though explanatoryinformation form feature groups. On aqueous and organic solvent databases, ML models revealed the predictive relevance of soluteswith increasing polar surface area and decreasing polarizability, yielding better results than state-of-the-art benchmark NeuralNetwork methods (without complex quantum mechanical or molecular dynamic simulations). Both algorithms successfullyoutperformed previous ΔGsol predictions methods, with a maximum absolute error of 0.22 ± 0.02 kcal mol−1, further validated in anexternal benchmark database and with solvent hold-out tests. With these explanatory and statistical insights, they allow a thoughtfulapplication of this method for predicting other thermodynamic properties, stressing the relevance of ML modeling for furthercomplex computational chemistry problems.
+              </span>
+              <a href="javascript:void(0);" id="toggle-text-3" onclick="toggleText3()">Show more</a>
+          </p>
+      </div>
+
+      <!-- Book 4 -->
+      <div id="book4" class="book-card">
+          <h3>Graph Respresentations for Functional Residue Identification</h3>
+          <a href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/network centrality comparisons with widgets.html">
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/ja4.png" alt="Book 4">
+          </a>
+          <p><b>Research:</b>
+              <span id="text-content">
+                  Recent advances in protein function prediction exploit graph-based deep learning approaches to correlate the structural and topological features of proteins with their molecular functions. However, proteins in vivo are not static but dynamic molecules that alter conformation for functional purposes. Here, we apply normal mode analysis to native protein conformations and augment protein graphs by connecting edges between dynamically correlated residue pairs. 
+              </span>
+              <span id="more-content-4" style="display:none;">
+                  In the multilabel function classification task, our method demonstrates a remarkable performance gain based on this dynamics-informed representation. The proposed graph neural network, ProDAR, increases the interpretability and generalizability of residue-level annotations and robustly reflects structural nuance in proteins. We elucidate the importance of dynamic information in graph representation by comparing class activation maps for hMTH1, nitrophorin, and SARS-CoV-2 receptor binding domain. Our model successfully learns the dynamic fingerprints of proteins and pinpoints the residues of functional impacts, with vast untapped potential for broad biotechnology and pharmaceutical applications. 
+              </span>
+              <a href="javascript:void(0);" id="toggle-text-4" onclick="toggleText4()">Show more</a>
+          </p>
+      </div>
+
+      <!-- Book 5 -->
+      <div id="book5" class="book-card">
+          <h3>Understanding Structural Variability Using Protein Networks</h3>
+          <a href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/network centrality comparisons with widgets.html">
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/ja5.png" alt="Book 5">
+          </a>
+          <p><b>Research:</b>
+              <span id="text-content">
+                  Proteins perform their function by accessing a suitable conformer from the ensemble of available conformations. The conformational diversity of a chosen protein structure can be obtained by experimental methods under different conditions. A key issue is the accurate comparison of different conformations. A gold standard used for such a comparison is the root mean square deviation (RMSD) between the two structures. 
+              </span>
+              <span id="more-content-5" style="display:none;">
+                  While extensive refinements of RMSD evaluation at the backbone level are available, a comprehensive framework including the side chain interaction is not well understood. Here we employ protein structure network (PSN) formalism, with the non-covalent interactions of side chain, explicitly treated. The PSNs thus constructed are compared through graph spectral method, which provides a comparison at the local and at the global structural level. In this work, PSNs of multiple crystal conformers of single-chain, single-domain proteins, are subject to pair-wise analysis to examine the dissimilarity in their network topologies and in order to determine the conformational diversity of their native structures. This information is utilized to classify the structural domains of proteins into different categories. It is observed that proteins typically tend to retain structure and interactions at the backbone level. However, some of them also depict variability in either their overall structure or only in their inter-residue connectivity at the sidechain level, or both. Variability of sub-networks based on solvent accessibility and secondary structure is studied. The types of specific interactions are found to contribute differently to structure variability. An ensemble analysis by computing the mathematical variance of edge-weights across multiple conformers provided information on the contribution to overall variability from each edge of the PSN. Interactions that are highly variable are identified and their impact on structure variability has been discussed with the help of a case study. The classification based on the present side-chain network-based studies provides a framework to correlate the structure-function relationships in protein structures.
+              </span>
+              <a href="javascript:void(0);" id="toggle-text-5" onclick="toggleText5()">Show more</a>
+          </p>
+      </div>
+
+      <!-- Book 6 -->
+      <div id="book6" class="book-card">
+          <a href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/network centrality comparisons with widgets.html">
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/ja6.png" alt="Book 6">
+          </a>
+        <p><b>Review:</b>
+            <span id="text-content">
+                Protein-nucleic acid (PNA) binding plays critical roles in the transcription, translation, regulation, and three-dimensional organization of the genome. Structural models of proteins bound to nucleic acids (NA) provide insights into the chemical, electrostatic, and geometric properties of the protein structure that give rise to NA binding but are scarce relative to models of unbound proteins. We developed a deep learning approach for predicting PNA binding given the unbound structure of a protein that we call PNAbind.  
+            </span>
+            <span id="more-content-6" style="display:none;">
+                Our method utilizes graph neural networks to encode the spatial distribution of physicochemical and geometric properties of protein structures that are predictive of NA binding. Using global physicochemical encodings, our models predict the overall binding function of a protein, and using local encodings, they predict the location of individual NA binding residues. Our models can discriminate between specifcity for DNA or RNA binding, and we show that predictions made on computationally derived protein structures can be used to gain mechanistic understanding of chemical and structural features that determine NA recognition. Binding site predictions were validated against benchmark datasets, achieving AUROC scores in the range of 0.92–0.95. We applied our models to the HIV-1 restriction factor APOBEC3G and showed that our model predictions are consistent with and help explain experimental RNA binding data.
+            </span>
+            <a href="javascript:void(0);" id="toggle-text-6" onclick="toggleText6()">Show more</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function toggleText() {
+      const moreContent = document.getElementById("more-content");
+      const toggleTextLink = document.getElementById("toggle-text");
+
+      // Check if the "more-content" is currently visible
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline"; // Show the hidden text
+        toggleTextLink.innerHTML = "Show less"; // Change the text to "Show less"
+      } else {
+        moreContent.style.display = "none"; // Hide the extra text
+        toggleTextLink.innerHTML = "Show more"; // Change the text to "Show more"
+      }
+    }
+  </script>
+
+  <script>
+    function toggleText2() {
+      const moreContent = document.getElementById("more-content-2");
+      const toggleTextLink = document.getElementById("toggle-text-2");
+
+      // Check if the "more-content" is currently visible
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline"; // Show the hidden text
+        toggleTextLink.innerHTML = "Show less"; // Change the text to "Show less"
+      } else {
+        moreContent.style.display = "none"; // Hide the extra text
+        toggleTextLink.innerHTML = "Show more"; // Change the text to "Show more"
+      }
+    }
+  </script>
+
+  <script>
+    function toggleText3() {
+      const moreContent = document.getElementById("more-content-3");
+      const toggleTextLink = document.getElementById("toggle-text-3");
+
+      // Check if the "more-content" is currently visible
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline"; // Show the hidden text
+        toggleTextLink.innerHTML = "Show less"; // Change the text to "Show less"
+      } else {
+        moreContent.style.display = "none"; // Hide the extra text
+        toggleTextLink.innerHTML = "Show more"; // Change the text to "Show more"
+      }
+    }
+  </script>
+
+  <script>
+    function toggleText4() {
+      const moreContent = document.getElementById("more-content-4");
+      const toggleTextLink = document.getElementById("toggle-text-4");
+
+      // Check if the "more-content" is currently visible
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline"; // Show the hidden text
+        toggleTextLink.innerHTML = "Show less"; // Change the text to "Show less"
+      } else {
+        moreContent.style.display = "none"; // Hide the extra text
+        toggleTextLink.innerHTML = "Show more"; // Change the text to "Show more"
+      }
+    }
+  </script>
+
+  <script>
+    function toggleText5() {
+      const moreContent = document.getElementById("more-content-5");
+      const toggleTextLink = document.getElementById("toggle-text-5");
+
+      // Check if the "more-content" is currently visible
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline"; // Show the hidden text
+        toggleTextLink.innerHTML = "Show less"; // Change the text to "Show less"
+      } else {
+        moreContent.style.display = "none"; // Hide the extra text
+        toggleTextLink.innerHTML = "Show more"; // Change the text to "Show more"
+      }
+    }
+  </script>
+
+  <script>
+    function toggleText6() {
+      const moreContent = document.getElementById("more-content-6");
+      const toggleTextLink = document.getElementById("toggle-text-6");
+
+      // Check if the "more-content" is currently visible
+      if (moreContent.style.display === "none") {
+        moreContent.style.display = "inline"; // Show the hidden text
+        toggleTextLink.innerHTML = "Show less"; // Change the text to "Show less"
+      } else {
+        moreContent.style.display = "none"; // Hide the extra text
+        toggleTextLink.innerHTML = "Show more"; // Change the text to "Show more"
+      }
+    }
+  </script>
+    
+  <!-- Bootstrap JS (required for navigation toggle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>David Foutch</title>
+  <!-- Link to Bootstrap for responsive layout -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet"> <!-- For icons -->
+  <!-- Set favicon for the webpage tab -->
+  <link rel="icon" href="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/favicon.png" type="image/jpeg">
+  <style>
+
+    /* Navbar Styling */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      /*background-color: rgba(0, 0, 0, 0.6);*/ /* Shiny black navbar */
+      background-color: #333; /* Shiny black navbar */
+      padding: 10px 50px;
+      box-shadow: none;
+      z-index: 1000;
+    }
+
+    /* Brand Styling */
+    .navbar .navbar-brand {
+      color: white;
+      font-size: 1.8em;
+      font-weight: bold;
+      letter-spacing: 1px;
+      display: flex;
+      flex-direction: column; /* Stack name and byline vertically */
+      align-items: center; /* Center the items */
+      text-align: center; /* Ensure text is centered */
+    }
+
+    /* Name container styling */
+    .navbar .navbar-brand .name-container {
+      display: flex;
+      flex-direction: row; /* Place image and name side by side */
+      align-items: center; /* Align the image and name vertically */
+      justify-content: center; /* Center the content horizontally */
+    }
+
+     /* Byline Styling */
+    .navbar .navbar-brand .byline {
+      font-size: 0.5em;
+      font-style: italic;
+      color: white;
+      margin-top: 5px; /* Space between name and byline */
+      font-weight: normal; /* Make byline text lighter */
+      opacity: 0.8; /* Slightly reduce opacity for a softer look */
+      text-align: center; /* Ensure the byline starts from the left */
+    }
+
+    /* Image Styling */
+    .navbar .navbar-brand img {
+      width: 60px;  /* Adjust the size of your image */
+      height: 60px;
+      border-radius: 50%; /* Make it circular */
+      position: absolute;
+      left: 20px; /* Move the image to the left */
+      top: 50%;  /* Vertically center the image */
+      transform: translateY(-50%); /* Ensure it's vertically centered */
+    }
+
+
+    .navbar-nav {
+      display: flex;
+      justify-content: center;  /* Center the nav items */
+      width: 100%;
+    }
+
+    .navbar-nav .nav-item {
+      margin-left: 20px;
+      margin-right: 20px;
+    }
+
+    .nav-link {
+      color: white !important;
+      font-size: 1.2em;
+      text-transform: uppercase;
+      position: relative; /* To position the underline */
+      transition: color 0.3s ease;
+      text-decoration: none;
+    }
+
+    /* Creating the underline effect */
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      background-color: #00b4d8;
+      bottom: 0;
+      left: 50%;
+      transition: width 0.3s ease, left 0.3s ease;
+    }
+
+    .nav-link:hover {
+      color: #00b4d8 !important;
+    }
+
+    .nav-link:hover::after {
+      width: 100%;
+      left: 0; /* Slide out from the center */
+    }
+
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Optional: Body padding to prevent navbar overlap */
+    body {
+      padding-top: 80px; /* Space below the navbar */
+    }
+
+    /* About Section Styling */
+    .about-section {
+      padding: 50px 0;
+      text-align: left;
+      background-color: #f9f9f9;
+    }
+
+    .about-section h1 {
+      font-size: 2.5em;
+      text-align: center;
+      color: #0077b6;
+      margin-bottom: 20px;
+    }
+
+    .about-section h2 {
+      font-size: 1.6em;
+      text-align: left;
+      color: #000000;
+      max-width: 800px;
+      margin: 0 auto;
+      margin-bottom: 10px;
+      margin-top: 20px;
+    }
+
+    .about-section p {
+      font-family: 'Cardo', times new roman;
+      font-size: 1.5em;
+      color: #333;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Container for the word with hover text box */
+    .hover-box-container {
+      position: relative; /* Needed for positioning the text box */
+      display: inline-block;
+      cursor: pointer;
+      color: #0077b6; /* Color for the Greek word or element */
+      font-weight: bold;
+    }
+
+    /* The text box that will appear on hover */
+    .hover-text-box {
+      visibility: hidden; /* Initially hidden */
+      opacity: 0; /* Start with no visibility */
+      position: absolute;
+      top: 120%; /* Position the text box below the hovered element */
+      left: 50%;
+      transform: translateX(-50%);
+      background-color: rgba(0, 0, 0, 1.0); /* Dark background */
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: 'Cardo', times new roman;
+      font-size: 0.75em;
+      width: 800px; /* Width of the text box */
+      text-align: center;
+      z-index: 1;
+      transition: opacity 0.3s ease-in-out; /* Smooth transition */
+    }
+
+    .container-greek p {
+      font-family: 'Cardo', times new roman;
+      font-size: 1.6em;
+      color: #333;
+      line-height: 1.6;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* Show the text box when hovering */
+    .hover-box-container:hover .hover-text-box {
+      visibility: visible;
+      opacity: 1; /* Make the text box visible on hover */
+    }
+
+    /* Smooth scrolling effect */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Container for the images */
+    .image-container {
+        display: flex; /* Use flexbox to place the images side by side */
+        justify-content: center; /* Horizontally center the content */
+        align-items: center; /* Vertically center the content */
+        margin-top: 20px; /* Space between the paragraph and the images */
+        gap: 20px; /* Space between images */
+        width: 100%; /* Ensure it spans the full width */
+    }
+
+    /* Styling for each image */
+    .image-container img {
+        width: 45%; /* Make the images responsive and adjust their size */
+        height: auto; /* Keep aspect ratio */
+        border-radius: 8px; /* Optional: rounded corners for the images */
+        display: block;
+        margin: 0 auto; /* This centers the image horizontally */
+    }
+
+    /* Caption styling */
+    .caption {
+        text-align: center;
+        font-size: 1.1em;
+        margin-top: 10px;
+        font-style: italic;
+        color: #555; /* Slightly gray text */
+    }
+
+  </style>
+</head>
+<body>
+
+  <!-- Navigation Bar (same as homepage) -->
+  <nav class="navbar navbar-expand-lg">
+    <div class="container">
+      <a class="navbar-brand" href="index.html">
+        <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/favicon.png" alt="David Foutch">
+        David Foutch
+        <span class="byline">Data Science and Bioinformatics</span>
+      </a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="projects.html">Projects</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="tutorials.html">Tutorials</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="researchreviews.html">Data Science in Research</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <div class="about-section">
+    <div class="container">
+      <h1>About Me</h1>
+      <p>
+        Hello! I’m David Foutch, a passionate Data Scientist with expertise in Bioinformatics and Computational Biology. I specialize in leveraging data science techniques and customized visualizations to identify trends and patterns that drive informed decision-making in business, healthcare, and life sciences.
+      </p>
+      <div class="image-container">
+        <!-- Image 1 -->
+        <div>
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/picture.jpg">
+        </div>
+      </div>
+      <br>
+      <p>
+        With a strong foundation in programming, statistical analysis, and biological systems, I thrive on challenging projects that bridge the gap between data and decision-making. I am constantly exploring new technologies and approaches in the world of data science to enhance my skills and stay at the top of my game!
+      </p>
+      <br>
+      <h1>Thinking about Data as a Dynamic System</h1>
+      <p>
+        My first exposure to graph theory and real-world networks came during an undergraduate neuroscience course, where I learned about interacting brain regions that shift between idle and attentive states—essentially networks in action. This sparked my interest in graph theory, a branch of mathematics used to analyze systems of interacting components. Since then, I’ve applied this framework to fields such as gene expression, metabolomics, protein-protein interactions, protein structure, and molecular energy landscapes. What excites me about this approach is its potential to reveal not just isolated parts, but how systems function as a whole. In clinical contexts, viewing underlying biology as an interconnected system can shed light on how disruptions—like a gene mutation—can propagate across the system and contribute to the emergence of disease phenotypes.
+      </p>
+      <br>
+      <h1>Adventures in Philosophy and Religion</h1>
+      <p>
+        My passion for the history of ideas spans both Western and Eastern thought, with a special interest in the complexities of Eastern philosophy. One of the most impactful classes I had as an undergraduate was a philosophy of religion course where the professor translated the Dao De Jing as we discussed it. The first two lines <b><b>道可道，非常道。名可名，非常名。</b></b> (Dào kě dào, fēi cháng dào. Míng kě míng, fēi cháng míng) of the text have stayed with me over the years. The text is simple: The way that can be walked is not the unchangeable Way. The name that can be named is not the unchangeable Name. Simple, yet it communicates the ineffability of the Dao (the Way), and by extension the mystery of our own existence. It also serves as a reminder not to confuse the categories of thought that we use to represent and parse the world around us with how the world is in itself. There is always something beyond us that calls for humility.
+      </p>
+      <div class="image-container">
+          <!-- Image 1 -->
+          <div>
+              <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/religion.png" alt="Toy Design 1">
+              <div class="caption">Hinduism, Buddhism and Taoism - Religions that I have explored and  deeply appreciate their ideas on impermanence.</div>
+          </div>
+      </div>
+      <br>
+      <p>
+        In a sense, my musings have come full circle back to my Christian roots. I have been thinking about role my Christian heritage has played in my development as a human being. One of my hobbies is learning to translate the Greek of the New Testament. But I am relating the text to other sources that must have influenced how the text was read 2000 years ago. Below is an excerpt of the project: 
+      </p>
+      <h2>Translating the Greek NT with Sources</h2>
+      <p> 
+      <div class="container-greek">
+        <p>
+          <span class="hover-box-container">Ἐν ἀρχῇ 
+            <span class="hover-text-box">The first of several allusions to the LXX: Ἐν ἀρχῇ ἐποίησεν ὁ θεὸς τὸν οὐρανὸν καὶ τὴν γῆν</span>
+          </span> ἦν ὁ 
+          <span class="hover-box-container"> λόγος
+            <span class="hover-text-box">For Heraclitus and the Pre-Socratic philosophers the Λόγος ἐστιν ἡ ἀρχὴ τοῦ κόσμου. Heraclitus posited that the Logos is a rational principle governing the cosmos, but also something that humans fail to fully understand. The Logos is an underlying order or law, one that binds all of reality into a unified whole despite its apparent changes. Heraclitus' Logos is often interpreted as the rational structure of the cosmos or the divine reason that orders the world, contrasting with the chaotic flow of change that he believed characterized existence.</span>
+          </span>, καὶ ὁ λόγος ἦν πρὸς τὸν Θεόν. οὗτος ἦν ἐν ἀρχῇ πρὸς τὸν Θεόν. πάντα δι' αὐτοῦ ἐγένετο, καὶ χωρίς αὐτοῦ ἐγένετο οὐδὲ ἕν. ὃ γέγονεν ἐν αὐτῷ ζωὴ ἦν, καὶ ἡ ζωὴ ἦν 
+          <span class="hover-box-container">τὸ φῶς 
+            <span class="hover-text-box">LXX: καὶ εἶπεν ὁ θεός γενηθήτω φῶς καὶ ἐγένετο φῶς</span>
+          </span> τῶν ἀνθρώπων. καὶ τὸ φῶς ἐν τῇ 
+          <span class="hover-box-container">σκοτίᾳ 
+            <span class="hover-text-box">LXX: ἡ δὲ γῆ ἦν ἀόρατος καὶ ἀκατασκεύαστος καὶ σκότος ἐπάνω τῆς ἀβύσσουφαίνει</span>
+          </span>, καὶ ἡ σκοτία αὐτὸ οὐ κατέλαβεν.
+        </p>
+      </div>
+      <br>
+      <h1>3D-Printing Toy Designs</h1>
+      <p>
+        Recently my son and I have taken up 3D printing and designing our own action figures. We are just getting started; however, the toy designs are looking sharp! We look forward to launching his own YouTube channel where he can show off his work and unique designs.
+      </p>  
+      <!-- Container for images -->
+      <div class="image-container">
+        <div>
+            <img src="https://myprofessionalportfolio.s3.us-east-1.amazonaws.com/img/picture1.png" alt="Toy Design 2">
+            <div class="caption">An image of our 3D printer from <a href="https://bambulab.com/en-us">Bambu Lab</a> and <a href="https://openart.ai/home">OpenArt</a> images of Star Wars inspired action figures.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Bootstrap JS (required for navigation toggle) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
