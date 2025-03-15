@@ -158,42 +158,8 @@
 
     /* Optional: Body padding to prevent navbar overlap */
     body {
-      padding-top: 80px; /* Space below the navbar */
+      padding-top: 100px; /* Space below the navbar */
     }
-
-    /* About Section Styling */
-    .about-section {
-      padding: 50px 0;
-      text-align: left;
-      background-color: #f9f9f9;
-    }
-
-    .about-section h1 {
-      font-size: 2.5em;
-      text-align: center;
-      color: #0077b6;
-      margin-bottom: 20px;
-    }
-
-    .about-section h2 {
-      font-size: 1.6em;
-      text-align: left;
-      color: #000000;
-      max-width: 800px;
-      margin: 0 auto;
-      margin-bottom: 10px;
-      margin-top: 20px;
-    }
-
-    .about-section p {
-      font-family: 'Cardo', times new roman;
-      font-size: 1.5em;
-      color: #333;
-      line-height: 1.6;
-      max-width: 800px;
-      margin: 0 auto;
-    }
-
   </style>
 </head>
 <body>
@@ -232,21 +198,49 @@
   </nav>
 
   <div class="tab">
-    <button class="tablinks" onclick="openTab(event, 'Tab1', '00_drug_screening_project_summary_and_results.html')">00-Drug screening summary and results</button>
+    <button class="tablinks" onclick="openTab(event, 'Tab1', 'intro_to_ann.html')">00-Drug screening summary and results</button>
     <button class="tablinks" onclick="openTab(event, 'Tab2', 'LRH-1_Data_Analysis.html')">01-LRH1 data analysis</button>
     <button class="tablinks" onclick="openTab(event, 'Tab3', '02_overview_of_network_analysis.html')">02-Network analysis overview</button>
     <button class="tablinks" onclick="openTab(event, 'Tab4', '03_pdb_to_psn_using_ring.html')">03-PDB to PSN with RING</button>
     <button class="tablinks" onclick="openTab(event, 'Tab5', '04_psn_with_py3dmol.html')">04-Visualizing PSNs with Py3Dmol</button>
   </div>
 
-  <h1>Drug Screening Project: Summary and Results</h1>
-
-  <p>
-    Drug screening methods are crucial in the process of discovering and developing new medications. These methods involve testing a large number of compounds to identify potential drugs that can interact with specific biological targets. Traditional drug screening techniques include high-throughput screening (HTS), where thousands of compounds are tested in parallel, and in vitro assays, which evaluate the biological activity of compounds in cell cultures or biochemical assays. Recently, network analysis has emerged as a powerful tool in drug discovery. By leveraging computational and mathematical models, network analysis can map and analyze the complex interactions within biological systems. This approach helps identify key nodes and pathways that are critical in disease processes, thereby highlighting potential targets for drug intervention. Additionally, network analysis can predict off-target effects and drug repurposing opportunities by examining the connectivity and relationships between different biological entities. Combining traditional drug screening methods with network analysis enhances the efficiency and effectiveness of the drug discovery process, ultimately leading to the development of more targeted and safer therapeutic options.
-  </p>
+  
 
 
+  <script>
+    function openTab(evt, tabName, url) {
+        // Declare all variables
+        var i, tabcontent, tablinks, iframe;
 
+        // Get all elements with class="tabcontent" and hide them
+        tabcontent = document.getElementsByClassName("tabcontent");
+        for (i = 0; i < tabcontent.length; i++) {
+            tabcontent[i].style.display = "none";
+        }
+
+        // Get all elements with class="tablinks" and remove the class "active"
+        tablinks = document.getElementsByClassName("tablinks");
+        for (i = 0; i < tablinks.length; i++) {
+            tablinks[i].className = tablinks[i].className.replace(" active", "");
+        }
+
+        // Show the current tab, and add an "active" class to the button that opened the tab
+        document.getElementById(tabName).style.display = "block";
+        evt.currentTarget.className += " active";
+
+        // Load the iframe content dynamically
+        iframe = document.getElementById(tabName).getElementsByTagName('iframe')[0];
+        if (!iframe) {
+            iframe = document.createElement('iframe');
+            iframe.src = url;
+            document.getElementById(tabName).appendChild(iframe);
+        }
+    }
+
+    // Open the first tab by default
+    document.getElementsByClassName('tablinks')[0].click();
+  </script>
 
 
 
